@@ -1,0 +1,294 @@
+{
+  "customers": 200,
+  "input_sha256": "b82ef3124080469b7f208e246f08b6de66bc2a057e0aa84d6eea481716d578da",
+  "features": [
+    "balance",
+    "avg_monthly_spend",
+    "product_count",
+    "overdue_count"
+  ],
+  "missing_in_used_features": {
+    "balance": 0,
+    "avg_monthly_spend": 0,
+    "product_count": 0,
+    "overdue_count": 0,
+    "account_age_months": 0
+  },
+  "baseline_profiles": [
+    {
+      "cluster": 0,
+      "balance": 238836.385385,
+      "avg_monthly_spend": 23983.037308,
+      "product_count": 2.807692,
+      "overdue_count": 0.461538,
+      "account_age_months": 131.192308,
+      "customers": 52
+    },
+    {
+      "cluster": 1,
+      "balance": 243863.760172,
+      "avg_monthly_spend": 6984.688448,
+      "product_count": 2.913793,
+      "overdue_count": 0.413793,
+      "account_age_months": 121.534483,
+      "customers": 58
+    },
+    {
+      "cluster": 2,
+      "balance": 298908.572,
+      "avg_monthly_spend": 16233.5685,
+      "product_count": 5.45,
+      "overdue_count": 3.05,
+      "account_age_months": 106.65,
+      "customers": 20
+    },
+    {
+      "cluster": 3,
+      "balance": 248964.805714,
+      "avg_monthly_spend": 15927.822857,
+      "product_count": 6.671429,
+      "overdue_count": 0.142857,
+      "account_age_months": 123.742857,
+      "customers": 70
+    }
+  ],
+  "sse": {
+    "1": 800.0,
+    "2": 644.686446,
+    "3": 513.809754,
+    "4": 434.330185,
+    "5": 366.208485,
+    "6": 317.668635,
+    "7": 280.112898,
+    "8": 257.205207,
+    "9": 236.657108
+  },
+  "elbow_k": 4,
+  "silhouette": {
+    "2": 0.198685,
+    "3": 0.228086,
+    "4": 0.227531,
+    "5": 0.240539,
+    "6": 0.249061,
+    "7": 0.264216,
+    "8": 0.261246,
+    "9": 0.259129
+  },
+  "seed_comparison": {
+    "42": {
+      "sse": 434.330185,
+      "ari_vs_seed42": 1.0,
+      "profiles": [
+        {
+          "cluster": 0,
+          "balance": 238836.385385,
+          "avg_monthly_spend": 23983.037308,
+          "product_count": 2.807692,
+          "overdue_count": 0.461538,
+          "customers": 52
+        },
+        {
+          "cluster": 1,
+          "balance": 243863.760172,
+          "avg_monthly_spend": 6984.688448,
+          "product_count": 2.913793,
+          "overdue_count": 0.413793,
+          "customers": 58
+        },
+        {
+          "cluster": 2,
+          "balance": 298908.572,
+          "avg_monthly_spend": 16233.5685,
+          "product_count": 5.45,
+          "overdue_count": 3.05,
+          "customers": 20
+        },
+        {
+          "cluster": 3,
+          "balance": 248964.805714,
+          "avg_monthly_spend": 15927.822857,
+          "product_count": 6.671429,
+          "overdue_count": 0.142857,
+          "customers": 70
+        }
+      ]
+    },
+    "0": {
+      "sse": 433.941602,
+      "ari_vs_seed42": 0.561333,
+      "profiles": [
+        {
+          "cluster": 0,
+          "balance": 213749.468472,
+          "avg_monthly_spend": 6345.716806,
+          "product_count": 4.208333,
+          "overdue_count": 0.277778,
+          "customers": 72
+        },
+        {
+          "cluster": 1,
+          "balance": 308198.015577,
+          "avg_monthly_spend": 20636.665,
+          "product_count": 6.480769,
+          "overdue_count": 0.192308,
+          "customers": 52
+        },
+        {
+          "cluster": 2,
+          "balance": 221652.799455,
+          "avg_monthly_spend": 22422.188182,
+          "product_count": 2.527273,
+          "overdue_count": 0.472727,
+          "customers": 55
+        },
+        {
+          "cluster": 3,
+          "balance": 302958.831429,
+          "avg_monthly_spend": 15649.061905,
+          "product_count": 5.333333,
+          "overdue_count": 3.0,
+          "customers": 21
+        }
+      ]
+    },
+    "7": {
+      "sse": 433.823772,
+      "ari_vs_seed42": 0.453643,
+      "profiles": [
+        {
+          "cluster": 0,
+          "balance": 199640.340926,
+          "avg_monthly_spend": 21332.282963,
+          "product_count": 2.37037,
+          "overdue_count": 0.462963,
+          "customers": 54
+        },
+        {
+          "cluster": 1,
+          "balance": 304121.914091,
+          "avg_monthly_spend": 16032.806818,
+          "product_count": 5.227273,
+          "overdue_count": 2.954545,
+          "customers": 22
+        },
+        {
+          "cluster": 2,
+          "balance": 230505.167123,
+          "avg_monthly_spend": 6381.613973,
+          "product_count": 4.465753,
+          "overdue_count": 0.273973,
+          "customers": 73
+        },
+        {
+          "cluster": 3,
+          "balance": 307277.651961,
+          "avg_monthly_spend": 21986.784118,
+          "product_count": 6.313725,
+          "overdue_count": 0.176471,
+          "customers": 51
+        }
+      ]
+    }
+  },
+  "extended_profiles": [
+    {
+      "cluster": 0,
+      "balance": 198286.449194,
+      "avg_monthly_spend": 16371.039677,
+      "product_count": 2.419355,
+      "overdue_count": 0.387097,
+      "account_age_months": 174.612903,
+      "customers": 62
+    },
+    {
+      "cluster": 1,
+      "balance": 286448.283469,
+      "avg_monthly_spend": 14578.045102,
+      "product_count": 6.591837,
+      "overdue_count": 0.163265,
+      "account_age_months": 174.714286,
+      "customers": 49
+    },
+    {
+      "cluster": 2,
+      "balance": 257262.511094,
+      "avg_monthly_spend": 14678.984531,
+      "product_count": 4.734375,
+      "overdue_count": 0.25,
+      "account_age_months": 45.328125,
+      "customers": 64
+    },
+    {
+      "cluster": 3,
+      "balance": 286990.8608,
+      "avg_monthly_spend": 16922.6064,
+      "product_count": 4.6,
+      "overdue_count": 2.84,
+      "account_age_months": 95.12,
+      "customers": 25
+    }
+  ],
+  "extended_ari_vs_baseline": 0.292603,
+  "baseline_to_extended_counts": [
+    [
+      32,
+      1,
+      15,
+      4
+    ],
+    [
+      30,
+      5,
+      21,
+      2
+    ],
+    [
+      0,
+      1,
+      0,
+      19
+    ],
+    [
+      0,
+      42,
+      28,
+      0
+    ]
+  ],
+  "unscaled_profiles": [
+    {
+      "cluster": 2,
+      "balance": 38232.170238,
+      "avg_monthly_spend": 14549.86881,
+      "product_count": 3.952381,
+      "overdue_count": 0.738095,
+      "customers": 42
+    },
+    {
+      "cluster": 0,
+      "balance": 179367.2,
+      "avg_monthly_spend": 15460.106667,
+      "product_count": 4.754386,
+      "overdue_count": 0.350877,
+      "customers": 57
+    },
+    {
+      "cluster": 3,
+      "balance": 302864.613043,
+      "avg_monthly_spend": 16034.211087,
+      "product_count": 4.695652,
+      "overdue_count": 0.565217,
+      "customers": 46
+    },
+    {
+      "cluster": 1,
+      "balance": 440142.622182,
+      "avg_monthly_spend": 15671.901091,
+      "product_count": 4.327273,
+      "overdue_count": 0.763636,
+      "customers": 55
+    }
+  ],
+  "unscaled_ari_vs_baseline": 0.006292,
+  "unscaled_balance_variance_share": 0.996654
+}
