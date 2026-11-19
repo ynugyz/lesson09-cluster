@@ -126,6 +126,7 @@
     }
     .icon-button:hover { background: #fff; border-color: #bed4f6; transform: translateY(-1px); }
     .icon-button:disabled { color: #8c97a6; transform: none; }
+    .icon-button[aria-pressed="true"] { background: #e3efff; border-color: #c8dcfa; color: #205ec5; }
     .expand {
       width: 15px;
       height: 15px;
@@ -214,6 +215,7 @@
       flex: none;
     }
     .scope:hover { background: #ffffff22; }
+    .scope:disabled { cursor: default; background: #ffffff11; }
     .plot { position: relative; margin-top: 11px; }
     #scatterChart { display: block; width: 100%; height: clamp(236px, 21vw, 350px); border-radius: 11px; }
     .plot-tip {
@@ -330,6 +332,9 @@
     }
     .footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 7px 15px; padding-top: 17px; color: var(--muted); font-size: 11px; }
     .footer a { font-weight: 640; }
+    body[data-presentation="true"] .wrap { width: min(100% - 32px, 1664px); }
+    body[data-presentation="true"] main { padding-top: 22px; }
+    body[data-presentation="true"] #scatterChart { height: clamp(275px, 37vh, 520px); }
     [hidden] { display: none !important; }
     @media (min-width: 1600px) {
       .panel { padding: 24px; }
@@ -381,7 +386,7 @@
       <div class="toolbar">
         <span id="live" class="live" role="status" title="每 30 秒读取实验结果">正在读取</span>
         <button id="refresh" class="icon-button" type="button" aria-label="刷新数据" title="刷新数据">↻</button>
-        <button id="fullscreen" class="icon-button" type="button" aria-label="进入全屏" title="进入全屏"><span class="expand" aria-hidden="true"></span></button>
+        <button id="fullscreen" class="icon-button" type="button" aria-label="大屏模式" aria-pressed="false" title="大屏模式"><span class="expand" aria-hidden="true"></span></button>
       </div>
     </div>
   </header>
@@ -588,8 +593,8 @@
       const { model, profiles } = dataset;
       $("count").textContent = numberFormat.format(model.customers);
       $("groups").textContent = profiles.length;
-      $("sse").textContent = model.sse[model.elbow_k].toFixed(2);
-      $("silhouette").textContent = model.silhouette[model.elbow_k].toFixed(4);
+      $("sse").textContent = model.sse[profiles.length].toFixed(2);
+      $("silhouette").textContent = model.silhouette[profiles.length].toFixed(4);
       $("distribution").replaceChildren(...profiles.map(({ cluster, customers }) => {
         const bar = document.createElement("span");
         bar.style.flexBasis = (100 * customers / model.customers) + "%";
@@ -830,15 +835,22 @@
     $("scope").addEventListener("click", () => selectCluster(null));
     $("refresh").addEventListener("click", refresh);
     const fullscreen = $("fullscreen");
-    fullscreen.hidden = !document.fullscreenEnabled;
+    function setPresentation(enabled) {
+      document.body.dataset.presentation = enabled;
+      fullscreen.setAttribute("aria-pressed", enabled);
+      fullscreen.title = enabled ? "退出大屏模式" : "大屏模式";
+    }
     fullscreen.addEventListener("click", () => {
-      const toggle = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
-      toggle.catch(() => {});
+      const enabled = document.body.dataset.presentation !== "true";
+      setPresentation(enabled);
+      if (enabled && document.fullscreenEnabled) document.documentElement.requestFullscreen().catch(() => {});
+      if (!enabled && document.fullscreenElement) document.exitFullscreen().catch(() => {});
     });
     document.addEventListener("fullscreenchange", () => {
-      const label = document.fullscreenElement ? "退出全屏" : "进入全屏";
-      fullscreen.setAttribute("aria-label", label);
-      fullscreen.title = label;
+      setPresentation(Boolean(document.fullscreenElement));
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !document.fullscreenElement) setPresentation(false);
     });
     for (const button of $("metricTabs").children) {
       button.addEventListener("click", () => {
